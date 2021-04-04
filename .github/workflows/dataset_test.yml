@@ -44,4 +44,3 @@ jobs:
       run: |
         ./importDataset.sh
         ./tests/dataset_tests/DatasetTests --gtest_also_run_disabled_tests
-      run: ctest -C $BUILD_TYPE
