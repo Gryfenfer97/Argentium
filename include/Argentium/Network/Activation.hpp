@@ -56,7 +56,7 @@ namespace Ag{
 			}
 
 			static Internal::ActivationFunctions sigmoid = std::make_tuple(sigmoidFunction, sigmoidDerivate);
-			static Internal::ActivationFunctions softmax = std::make_tuple(softmaxFunction, softmaxDerivate);
+			static Internal::ActivationFunctions softmax = std::make_tuple(softmaxFunction, sigmoidDerivate);
 			static Internal::ActivationFunctions identity = std::make_tuple(identityFunction, identityDerivate);
 		}
 }
