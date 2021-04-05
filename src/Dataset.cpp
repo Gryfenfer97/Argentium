@@ -1,4 +1,5 @@
 #include <Argentium/Dataset.hpp>
+#include <algorithm>
 
 using namespace Ag;
 
