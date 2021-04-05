@@ -1,4 +1,5 @@
 #include <Argentium/DatasetModel/MNIST.hpp>
+#include <climits>
 
 using namespace Ag::DataSetModel;
 
