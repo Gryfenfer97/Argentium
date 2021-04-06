@@ -17,11 +17,7 @@ jobs:
     steps:
     - name: Checkout the project
       uses: actions/checkout@v2
-    - name: Checkout datasets
-      uses: actions/checkout@v2
-      with:
-        repository: MatthieuHernandez/Datasets-for-Machine-Learning
-        path: ./build/tests/dataset_tests/datasets
+    
 
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
@@ -40,6 +36,12 @@ jobs:
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build build --config Release
+
+    - name: Checkout datasets
+      uses: actions/checkout@v2
+      with:
+        repository: MatthieuHernandez/Datasets-for-Machine-Learning
+        path: ./build/tests/dataset_tests/datasets
 
     - name: Test
       working-directory: ${{github.workspace}}/build
