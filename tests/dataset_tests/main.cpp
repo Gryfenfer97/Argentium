@@ -43,7 +43,7 @@ TEST(Dataset, mnist)
     Ag::DataSetModel::MNIST trainData(std::string("./datasets/MNIST/train-labels.idx1-ubyte"), std::string("./datasets/MNIST/train-images.idx3-ubyte"));
     std::vector<std::shared_ptr<Ag::LayerFactory>> topology = {
         Ag::InputLayer(784),
-        Ag::FullyConnectedLayer(230,Ag::Activation::sigmoid),
+        Ag::FullyConnectedLayer(230,Ag::Activation::tanh),
         Ag::FullyConnectedLayer(10,Ag::Activation::sigmoid)
     };
 
@@ -74,7 +74,7 @@ TEST(Dataset, fashionMnist)
     const std::vector<std::shared_ptr<Ag::LayerFactory>> topology = {
         Ag::InputLayer(784),
         Ag::FullyConnectedLayer(230,Ag::Activation::sigmoid),
-        Ag::FullyConnectedLayer(10,Ag::Activation::sigmoid)
+        Ag::FullyConnectedLayer(10,Ag::Activation::softmax)
     };
 
     Ag::Network net{ topology };
