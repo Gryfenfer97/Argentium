@@ -58,14 +58,14 @@ namespace Ag{
 			static std::vector<float> tanhFunction(const std::vector<float>& inputs)
 			{
 				std::vector<float> res(inputs.size());
-				std::transform(inputs.begin(), inputs.end(), res.begin(), std::tanhf);
+				std::transform(inputs.begin(), inputs.end(), res.begin(), [](const float& z)->float {return std::tanh(z); });
 				return res;
 			}
 
 			static std::vector<float> tanhDerivate(const std::vector<float>& inputs)
 			{
 				std::vector<float> res(inputs.size());
-				std::transform(inputs.begin(), inputs.end(), res.begin(), [](const float& z)->float {return 1 - std::tanhf(z) * std::tanhf(z); });
+				std::transform(inputs.begin(), inputs.end(), res.begin(), [](const float& z)->float {return 1 - std::tanh(z) * std::tanh(z); });
 				return res;
 			}
 
