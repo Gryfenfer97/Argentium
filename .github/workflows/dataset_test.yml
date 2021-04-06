@@ -36,6 +36,16 @@ jobs:
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build build --config Release
+    
+    - name: ls
+      working-directory: ${{github.workspace}}/build
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: |
+        ls
+        ls tests
+        ls tests/dataset_tests
+        ls tests/dataset_tests/datasets
 
     - name: Checkout datasets
       uses: actions/checkout@v2
