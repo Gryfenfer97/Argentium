@@ -32,7 +32,7 @@ MNIST::MNIST(const std::string& labelFileName, const std::string& imageFileName,
 	assert(labelMagicNumber == 2049 && "your label file is not a MNIST file");
 
 	[[maybe_unused]] auto labelsNumber = read_n_bytes<uint32_t>(labelFile);
-	assert(labelsNumber == imagesNumber && "The number of images and labels does not correspond");
+	assert(labelsNumber == imagesNumber && "The number of images and labels does not match");
 
 
 
