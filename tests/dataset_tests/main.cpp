@@ -70,7 +70,7 @@ TEST(Dataset, fashionMnist)
 {
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
-	Ag::DataSetModel::MNIST trainData(std::string("./datasets/Fashion-MNIST/train-labels.idx1-ubyte"), std::string("./datasets/Fashion-MNIST/train-images.idx3-ubyte"));
+	Ag::DataSetModel::MNIST trainData(std::string("./datasets/Fashion-MNIST/train-labels-idx1-ubyte"), std::string("./datasets/Fashion-MNIST/train-images-idx3-ubyte"));
     const std::vector<std::shared_ptr<Ag::LayerFactory>> topology = {
         Ag::InputLayer(784),
         Ag::FullyConnectedLayer(230,Ag::Activation::sigmoid),
@@ -82,7 +82,7 @@ TEST(Dataset, fashionMnist)
     net.train(trainData, 1);
 
 
-    Ag::DataSetModel::MNIST testData(std::string("./datasets/Fashion-MNIST/t10k-labels.idx1-ubyte"), std::string("./datasets/Fashion-MNIST/t10k-images.idx3-ubyte"));
+    Ag::DataSetModel::MNIST testData(std::string("./datasets/Fashion-MNIST/t10k-labels-idx1-ubyte"), std::string("./datasets/Fashion-MNIST/t10k-images-idx3-ubyte"));
 
     const auto successRate = net.test(testData);
     end = std::chrono::system_clock::now();
