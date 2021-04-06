@@ -37,6 +37,12 @@ jobs:
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build build --config Release
     
+    - name: Checkout datasets
+      uses: actions/checkout@v2
+      with:
+        repository: MatthieuHernandez/Datasets-for-Machine-Learning
+        path: ./build/tests/dataset_tests/datasets
+      
     - name: ls
       working-directory: ${{github.workspace}}/build
       shell: bash
@@ -47,11 +53,7 @@ jobs:
         ls tests/dataset_tests
         ls tests/dataset_tests/datasets
 
-    - name: Checkout datasets
-      uses: actions/checkout@v2
-      with:
-        repository: MatthieuHernandez/Datasets-for-Machine-Learning
-        path: ./build/tests/dataset_tests/datasets
+    
 
     - name: Test
       working-directory: ${{github.workspace}}/build
