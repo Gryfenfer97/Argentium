@@ -17,6 +17,11 @@ jobs:
     steps:
     - name: Checkout the project
       uses: actions/checkout@v2
+    - name: Checkout datasets
+      uses: actions/checkout@v2
+      with:
+        repository: MatthieuHernandez/Datasets-for-Machine-Learning
+        path: ./build/tests/dataset_tests/datasets
 
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
@@ -41,6 +46,4 @@ jobs:
       shell: bash
       # Execute tests defined by the CMake configuration.  
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      run: |
-        ./importDataset.sh
-        ./tests/dataset_tests/DatasetTests --gtest_also_run_disabled_tests
+      run: ./tests/dataset_tests/DatasetTests --gtest_also_run_disabled_tests
