@@ -3,10 +3,6 @@ file(GLOB SRC
     "*.cpp"
 )
 
-include_directories(.. tests)
+add_executable(dataset_tests ${SRC})
 
-add_executable(DatasetTests ${SRC})
-
-target_link_libraries(DatasetTests gtest Argentium)
-
-install(TARGETS DatasetTests DESTINATION bin)
+target_link_libraries(dataset_tests PRIVATE argentium gtest)

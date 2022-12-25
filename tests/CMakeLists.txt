@@ -1,19 +1,7 @@
-file(GLOB SRC
-	"*.hpp"
-	"*.cpp"
-)
-
-add_subdirectory(googletest)
-include_directories(../include)
-
-
-add_library(GTest ${SRC})
-
-target_link_libraries(GTest gtest)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 
 add_subdirectory(dataset_tests)
 add_subdirectory(activation_test)
-
-
 

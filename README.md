@@ -45,10 +45,10 @@ int main(){
 
 ```bash
 # clone the project
-~$ git clone https://github.com/Gryfenfer97/Argentium.git
-~$ cd Argentium
+git clone https://github.com/Gryfenfer97/Argentium.git
+cd Argentium
 
-~$ cd build
-~$ cmake -G"Unix Makefiles" ./.. -DCMAKE_BUILD_TYPE=Release
-~$ cmake --build . --config Release
+conan install . -s build_type=Release --install-folder=./build --build missing #if you want to install GTest
+cmake . -Bbuild
+cmake --build build --config Release
 ```

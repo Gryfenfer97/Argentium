@@ -3,10 +3,6 @@ file(GLOB SRC
     "*.cpp"
 )
 
-include_directories(.. tests)
+add_executable(activation_tests ${SRC})
 
-add_executable(ActivationTests ${SRC})
-
-target_link_libraries(ActivationTests gtest Argentium)
-
-install(TARGETS ActivationTests DESTINATION bin)
+target_link_libraries(activation_tests PRIVATE argentium gtest)
