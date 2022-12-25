@@ -8,7 +8,6 @@ namespace Ag{
 
 	class Neuron{
 	private:
-		float z;
 		std::vector<float> lastInput;
 		std::vector<float> weights;
 		float bias;

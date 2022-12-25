@@ -6,7 +6,6 @@ using namespace Ag;
 
 Neuron::Neuron(const std::size_t nbInput)
 {
-	z = 0;
 	bias = 1.f;
 	this->weights.resize(nbInput, 0.f);
 	const float valueMax = 2.4f / sqrtf(static_cast<float>(nbInput));
