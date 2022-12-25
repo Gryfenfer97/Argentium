@@ -37,7 +37,7 @@ jobs:
       run: conan install . -s build_type=${{env.BUILD_TYPE}} --install-folder=${{github.workspace}}/build --build missing
 
     - name: Configure CMake
-      run: CC=gcc-12 CXX=/usr/bin/g++-12 cmake -DCMAKE_BUILD_TYPE=Release -B${{github.workspace}}/build -S${{github.workspace}} -G"Unix Makefiles"
+      run: CC=gcc-11 CXX=/usr/bin/g++-11 cmake -DCMAKE_BUILD_TYPE=Release -B${{github.workspace}}/build -S${{github.workspace}} -G"Unix Makefiles"
 
     - name: Build
       shell: bash
