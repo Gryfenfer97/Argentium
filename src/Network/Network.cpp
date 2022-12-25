@@ -35,7 +35,7 @@ std::vector<float> Network::calculateCost(const std::vector<float>& expectedOutp
 }
 
 
-Network::Network(const std::vector<std::shared_ptr<LayerFactory>>& topology)
+Network::Network(const Topology& topology)
 {
 	this->layers.resize(topology.size()-1);
 	for (std::size_t i = 1; i < topology.size(); i++)
@@ -68,7 +68,7 @@ float Network::test(const DataSet& dataSet)
 {
 	float successRate = 0.f;
 	for (std::size_t index = 0; index < dataSet.size(); index++) {
-		auto [input, output] = dataSet[index];
+		const auto [input, output] = dataSet[index];
 		std::vector<float> result = feedForward(input);
 		
 		if (std::max_element(std::begin(result), std::end(result)) - std::begin(result) == std::max_element(std::begin(output), std::end(output)) - std::begin(output)) {

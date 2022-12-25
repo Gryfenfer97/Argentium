@@ -27,7 +27,7 @@ namespace Ag
 		virtual std::vector<float> backProp(const std::vector<float>& inputCosts) = 0;
 	};
 
-	struct LayerFactory
+	struct LayerBuilder
 	{
 	public:
 		std::size_t numberOfOutput;

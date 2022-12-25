@@ -18,23 +18,23 @@ namespace Ag
 	};
 
 	
-	struct InputFactory : public LayerFactory
+	struct InputBuilder : public LayerBuilder
 	{
 		std::unique_ptr<BaseLayer> createLayer(std::size_t numberOfInput) override
 		{
 			return std::make_unique<Input>(numberOfInput);
 		}
 
-		InputFactory(const std::size_t numberOfOutput)
+		InputBuilder(const std::size_t numberOfOutput)
 		{
 			this->numberOfOutput = numberOfOutput;
 			this->activationFunctions = activationFunctions;
 		}
 	};
 
-	inline std::shared_ptr<InputFactory> InputLayer(const std::size_t numberOfInput)
+	inline std::shared_ptr<InputBuilder> InputLayer(const std::size_t numberOfInput)
 	{
-		return std::make_shared<InputFactory>(numberOfInput);
+		return std::make_shared<InputBuilder>(numberOfInput);
 	}
 	
 }

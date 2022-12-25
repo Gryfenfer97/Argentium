@@ -5,6 +5,8 @@
 
 namespace Ag
 {
+	typedef std::vector<std::shared_ptr<Ag::LayerBuilder>> Topology;
+
 	class Network
 	{
 	private:
@@ -18,7 +20,7 @@ namespace Ag
 	public:
 		Network() = default;
 
-		explicit Network(const std::vector<std::shared_ptr<LayerFactory>>& topology);
+		explicit Network(const Topology& topology);
 
 		[[nodiscard]] std::vector<float> evaluate(const std::vector<float>& inputs);
 		float train(const DataSet set, std::size_t epochSize);

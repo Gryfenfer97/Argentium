@@ -17,7 +17,7 @@ TEST(Dataset, xor)
     const std::vector<unsigned> topology = { 2,4,4,1 };
 
 	
-    std::vector<std::shared_ptr<Ag::LayerFactory>> t = {
+    std::vector<std::shared_ptr<Ag::LayerBuilder>> t = {
     	Ag::FullyConnectedLayer(2,Ag::Activation::sigmoid),
     	Ag::FullyConnectedLayer(4,Ag::Activation::sigmoid),
         Ag::FullyConnectedLayer(4,Ag::Activation::sigmoid),
@@ -41,7 +41,7 @@ TEST(Dataset, mnist)
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
     Ag::DataSetModel::MNIST trainData(std::string("./datasets/MNIST/train-labels.idx1-ubyte"), std::string("./datasets/MNIST/train-images.idx3-ubyte"));
-    std::vector<std::shared_ptr<Ag::LayerFactory>> topology = {
+    std::vector<std::shared_ptr<Ag::LayerBuilder>> topology = {
         Ag::InputLayer(784),
         Ag::FullyConnectedLayer(230,Ag::Activation::tanh),
         Ag::FullyConnectedLayer(10,Ag::Activation::sigmoid)
@@ -71,7 +71,7 @@ TEST(Dataset, fashionMnist)
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
 	Ag::DataSetModel::MNIST trainData(std::string("./datasets/Fashion-MNIST/train-labels-idx1-ubyte"), std::string("./datasets/Fashion-MNIST/train-images-idx3-ubyte"));
-    const std::vector<std::shared_ptr<Ag::LayerFactory>> topology = {
+    const std::vector<std::shared_ptr<Ag::LayerBuilder>> topology = {
         Ag::InputLayer(784),
         Ag::FullyConnectedLayer(230,Ag::Activation::sigmoid),
         Ag::FullyConnectedLayer(10,Ag::Activation::softmax)

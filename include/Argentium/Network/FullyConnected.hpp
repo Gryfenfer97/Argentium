@@ -20,22 +20,22 @@ namespace Ag
 		std::vector<float> backProp(const std::vector<float>& inputCosts) override;
 	};
 
-	struct FullyConnectedFactory : public LayerFactory
+	struct FullyConnectedBuilder : public LayerBuilder
 	{
 		std::unique_ptr<BaseLayer> createLayer(std::size_t numberOfInput) override
 		{
 			return std::make_unique<FullyConnected>(this->numberOfOutput, numberOfInput, this->activationFunctions);
 		}
 
-		FullyConnectedFactory(const std::size_t numberOfOutput, const Internal::ActivationFunctions& activationFunctions)
+		FullyConnectedBuilder(const std::size_t numberOfOutput, const Internal::ActivationFunctions& activationFunctions)
 		{
 			this->numberOfOutput = numberOfOutput;
 			this->activationFunctions = activationFunctions;
 		}
 	};
 
-	inline std::shared_ptr<FullyConnectedFactory> FullyConnectedLayer(const std::size_t numberOfNeuron, const Internal::ActivationFunctions& activationFunctions)
+	inline std::shared_ptr<FullyConnectedBuilder> FullyConnectedLayer(const std::size_t numberOfNeuron, const Internal::ActivationFunctions& activationFunctions)
 	{
-		return std::make_shared<FullyConnectedFactory>(numberOfNeuron, activationFunctions);
+		return std::make_shared<FullyConnectedBuilder>(numberOfNeuron, activationFunctions);
 	}
 }
