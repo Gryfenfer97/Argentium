@@ -92,7 +92,7 @@ TEST(Dataset, fashionMnist)
     std::cout << "finished computation at " << std::ctime(&end_time)
         << "elapsed time: " << elapsed_seconds.count() << "s\n";
     std::cout << "successRate : " << successRate << std::endl;
-    EXPECT_GT(successRate, 0.80f);
+    EXPECT_GT(successRate, 0.75f);
 }
 
 /*TEST(Dataset, emnist)

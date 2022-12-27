@@ -40,7 +40,7 @@ Network::Network(const Topology& topology)
 	this->layers.resize(topology.size()-1);
 	for (std::size_t i = 1; i < topology.size(); i++)
 	{
-		this->layers[i-1] = std::move(topology[i]->createLayer(topology[i-1]->numberOfOutput));
+		this->layers.at(i-1) = std::move(topology.at(i)->createLayer(topology.at(i-1)->numberOfOutput));
 	}
 }
 
@@ -51,7 +51,7 @@ std::vector<float> Network::evaluate(const std::vector<float>& inputs)
 
 float Network::train(DataSet set, const std::size_t epochSize)
 {
-	for(std::size_t i=0; i < epochSize; i++)
+	for(std::size_t epoch = 0; epoch < epochSize; epoch++)
 	{
 		set.shuffle();
 		for(std::size_t index = 0; index < set.size(); index++)
@@ -66,15 +66,17 @@ float Network::train(DataSet set, const std::size_t epochSize)
 
 float Network::test(const DataSet& dataSet)
 {
-	float successRate = 0.f;
+	std::size_t numberOfSuccess = 0;
 	for (std::size_t index = 0; index < dataSet.size(); index++) {
-		const auto [input, output] = dataSet[index];
+		const auto&& [input, output] = dataSet[index];
 		std::vector<float> result = feedForward(input);
 		
-		if (std::max_element(std::begin(result), std::end(result)) - std::begin(result) == std::max_element(std::begin(output), std::end(output)) - std::begin(output)) {
-			successRate++;
+		if (std::distance(std::begin(result), std::max_element(std::begin(result), std::end(result)))  == 
+			std::distance(std::begin(output), std::max_element(std::begin(output), std::end(output))))
+		{
+			numberOfSuccess += 1;
 		}
 		
 	}
-	return successRate / static_cast<float>(dataSet.size());
+	return static_cast<float>(numberOfSuccess) / static_cast<float>(dataSet.size());
 }

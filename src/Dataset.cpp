@@ -1,5 +1,7 @@
 #include <Argentium/Dataset.hpp>
 #include <algorithm>
+#include <random>
+
 
 using namespace Ag;
 
@@ -16,7 +18,7 @@ void DataSet::shuffle()
 
 void DataSet::push(const std::vector<float>& input, const std::vector<float>& output)
 {
-	this->set.push_back(std::make_pair(input, output));
+	this->set.emplace_back(input, output);
 }
 
 void DataSet::clear()
