@@ -12,8 +12,6 @@ namespace Ag{
 		std::vector<float> weights;
 		float bias;
 
-		
-
 	public:
 		Neuron() = default;
 		explicit Neuron(const std::size_t nbInput);

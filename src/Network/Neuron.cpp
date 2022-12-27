@@ -1,4 +1,4 @@
-#include <Argentium/Network/neuron.hpp>
+#include <Argentium/Network/Neuron.hpp>
 
 #define ALPHA 0.01f
 
@@ -16,10 +16,13 @@ Neuron::Neuron(const std::size_t nbInput)
 
 float Neuron::feedForward(const std::vector<float> &inputs)
 {
-	std::vector<float> mul(inputs.size());
 	this->lastInput = inputs;
-	std::transform(inputs.begin(), inputs.end(), this->weights.begin(), mul.begin(), std::multiplies<>{});
-	return std::accumulate(mul.begin(), mul.end(), 0.f) + this->bias;
+	return std::inner_product(
+		inputs.begin(),
+		inputs.end(),
+		this->weights.begin(),
+		this->bias
+	);
 }
 
 std::vector<float> Neuron::backProp(const float cost)

@@ -1,6 +1,6 @@
 #pragma once
 #include <Argentium/Network/BaseLayer.hpp>
-#include <Argentium/Network/neuron.hpp>
+#include <Argentium/Network/Neuron.hpp>
 
 
 namespace Ag
